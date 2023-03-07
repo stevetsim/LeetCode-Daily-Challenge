@@ -23,6 +23,19 @@ var pivotIndex = function (nums) {
   return -1
 }
 
+// Two pointer method for solution 1, slightly enhanced.
+var pivotIndex_1_enhanced = function (nums) {
+  let left = 0
+  let sum = 0
+  nums.forEach((x) => (sum += x))
+  for (let i = 0; i < nums.length; i++) {
+    sum -= nums[i]
+    if (sum == left) return i
+    left += nums[i]
+  }
+  return -1
+}
+
 // Solution 2
 var pivotIndex2 = function (nums) {
   for (let index = 0; index < nums.length; index++) {

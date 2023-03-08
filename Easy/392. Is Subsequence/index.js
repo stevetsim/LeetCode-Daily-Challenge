@@ -5,16 +5,6 @@
  */
 
 // Solution 1
-// var isSubsequence = function (s, t) {
-//   if (s.length > t.length) return false
-//   let sPointer = 0
-//   for (let i = 0; i < t.length; i++) {
-//     if (s[sPointer] === t[i]) sPointer++
-//   }
-
-//   return sPointer === s.length
-// }
-
 var isSubsequence = function (s, t) {
   if (s.length > t.length) return false
   let s_pointer = 0

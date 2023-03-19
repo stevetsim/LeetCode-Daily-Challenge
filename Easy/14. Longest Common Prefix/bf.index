@@ -1,0 +1,34 @@
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+var longestCommonPrefix = function(strs) {
+    let result = ''
+    let pointer = 0
+
+    if (strs.includes('')) return result
+
+    while (pointer !== strs[0].length) {
+        let cur = null
+        let not_match = false
+
+        for (let i = 0; i < strs.length; i++) {
+            let word = strs[i]
+            let letter = word.charAt(pointer)
+
+            if (cur) {
+                if (cur !== letter) {
+                    not_match = true
+                    break
+                }
+            }
+            else cur = letter
+        }
+
+        if (not_match) break;
+        pointer ++
+        result += cur
+    }
+
+    return result
+};

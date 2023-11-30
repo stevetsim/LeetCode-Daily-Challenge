@@ -3,26 +3,23 @@
  * @return {number}
  */
 var longestConsecutive = function(nums) {
-    if (nums.length === 0) return []
+    if (nums.length === 0) return 0;
 
-    let count = 1
-    let temp_count = 1
-    let pointer = 0
+    nums = Array.from(new Set(nums)); // Remove duplicates
 
-    nums = nums.sort((a,b) => a - b)
+    let currentStreak = 1;
+    let longestStreak = 1;
 
-    while (pointer < nums.length) {
-        if (nums[pointer + 1] === nums[pointer]) {
-            pointer++
-            continue
+    nums.sort((a, b) => a - b);
+
+    for (let i = 0; i < nums.length - 1; i++) {
+        if (nums[i] + 1 === nums[i + 1]) {
+            currentStreak++;
+            longestStreak = Math.max(longestStreak, currentStreak);
+        } else if (nums[i] !== nums[i + 1]) {
+            currentStreak = 1;
         }
-        else if (nums[pointer] + 1 === nums[pointer + 1]) {
-            temp_count++
-            if (temp_count > count) count = temp_count
-        } else temp_count = 1
-
-        pointer++
     }
 
-    return count
+    return longestStreak;
 };
